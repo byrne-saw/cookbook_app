@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if auth_headers.present? && auth_headers[/(?<=\A(Bearer ))\S+\z/]
       token = auth_headers[/(?<=\A(Bearer ))\S+\z/]
       begin
-        decoded_token = JWT.decod(
+        decoded_token = JWT.decode(
                                   token, 
                                   Rails.application.credentials.fetch(:secret_key_base), 
                                   { algorithm: 'HS256' }
